@@ -42,7 +42,6 @@ function formatDate(date) {
 function searchCity(city) {
     let apiKey = "b3a37c1584b0oatf80a196c74f3071cb";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-    console.log(apiUrl);
     axios.get(apiUrl).then(refreshWeather);
 }
 
@@ -50,6 +49,12 @@ function handleSearchSubmit(event) {
     event.preventDefault();
     let searchInput = document.querySelector("#search-form-input");
     searchCity(searchInput.value);
+}
+
+function getForecast(city) {
+  let apiKey = "b3a37c1584b0oatf80a196c74f3071cb";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
 }
 
 function displayForecast() {
@@ -82,4 +87,5 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Cardiff");
+getForecast();
 displayForecast();
